@@ -22,7 +22,8 @@ bootstrap() {
   (
     echo 'use mysql;'
     cat /usr/share/mysql/mysql_system_tables.sql
-    cat /usr/share/mysql/mysql_system_tables_data.sql |
+    cat /usr/share/mysql/mysql_system_tables_data.sql
+    cat /data.sql	|
     sed -e "s/^SELECT.*INTO @current_hostname;$/SELECT '%' INTO @current_hostname;/"
   ) |
   /usr/sbin/mysqld \

@@ -1,6 +1,6 @@
 # Nokorie-database
 #
-# VERSION 0.5
+# VERSION 0.6
 # Based on https://github.com/GoogleCloudPlatform/compute-docker-mysql
 
 FROM debian
@@ -23,6 +23,9 @@ ADD take-snapshot /etc/cron.daily/take-snapshot
 EXPOSE 3306
 
 VOLUME ["/mysql"]
+
+ADD data.sql /data.sql
+#RUN mysql < data.sql
 
 CMD ["/usr/bin/supervisord"]
 

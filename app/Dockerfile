@@ -1,15 +1,17 @@
 # Nokorie-app
 #
-# VERSION 1.0
+# VERSION 0.3
+# This is based on the example provided in https://github.com/Liamraystanley/flask-example
 
 FROM ubuntu
-
 MAINTAINER Gervasio Junior, juniorb08@gmail.com
+EXPOSE 4000
 
 RUN apt-get update
-USER root
+RUN apt-get -y install git python python-pip
+RUN git clone https://github.com/Liamraystanley/flask-example.git
+RUN pip install flask
 
 RUN python --version
 
-ENTRYPOINT echo "Starting nokorie-app..."
-EXPOSE 80
+ENTRYPOINT ["python", "flask-example/run.py"]
